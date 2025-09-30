@@ -12,4 +12,5 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion à la base de données : " . $e->getMessage());
 }
-echo "[Test db.php : connexion réussie à la base de données.]";
+/* echo "[Test db.php : connexion réussie à la base de données.]";
+*/
