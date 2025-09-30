@@ -44,8 +44,8 @@ TP PHP avec PDO : module d’inscription, connexion, profil, admin
 | 🧲 Cloner le repository en local | Utiliser GitHub Desktop pour récupérer le projet |
 | 💻 Ouvrir le projet dans VS Code | Ouvrir le dossier cloné dans Visual Studio Code |
 | 🏗️ Initialiser la structure du projet | Créer les dossiers (`css/`, `js/`, `includes/`, etc.) et les fichiers de base |
-| 🔧 Créer la base de données `moduleconnexion.sql` | Créer la table `utilisateurs` avec les champs requis |
 | 🧮 Créer les wireframes du projet | Ébauche visuelle avec Figma ou papier pour guider le design |
+| 🔧 Créer la base de données `moduleconnexion.sql` | Créer la table `utilisateurs` avec les champs requis |
 | 🏠 Développer la page `index.php` | Page d’accueil avec navigation |
 | ⚙️ Développer le fichier `db.php` | Connexion PDO centralisée |
 | 📝 Développer la page `inscription.php` | Formulaire d’inscription avec validation |
