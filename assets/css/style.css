@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     sans-serif;
@@ -11,9 +10,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-/* Header Styles */
+} /* Header Styles */
 .header {
   height: 80px;
   padding: 0 2rem;
@@ -24,12 +21,10 @@ body {
   border-bottom: 1px solid #e0e0e0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
 .logo-section {
   display: flex;
   align-items: center;
 }
-
 .logo {
   width: 48px;
   height: 48px;
@@ -43,12 +38,10 @@ body {
   font-weight: bold;
   font-size: 1.5rem;
 }
-
 .nav {
   display: flex;
   gap: 1.5rem;
 }
-
 .nav a {
   font-size: 1rem;
   color: #333;
@@ -56,17 +49,13 @@ body {
   transition: color 0.3s;
   font-weight: 500;
 }
-
 .nav a:hover {
   color: #667eea;
 }
-
 .nav a.active {
   color: #667eea;
   font-weight: 600;
-}
-
-/* Main Content */
+} /* Main Content */
 .main {
   flex: 1;
   padding: 4rem 2rem;
@@ -76,14 +65,12 @@ body {
   align-items: center;
   justify-content: center;
 }
-
 .title {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #333;
   font-weight: 700;
 }
-
 .description {
   font-size: 1.125rem;
   max-width: 600px;
@@ -91,7 +78,6 @@ body {
   color: #666;
   line-height: 1.6;
 }
-
 .btn-primary {
   width: 200px;
   height: 48px;
@@ -106,16 +92,13 @@ body {
   transition: all 0.3s;
   box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
 }
-
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
 }
-
 .btn-primary:active {
   transform: translateY(0);
 }
-
 .link {
   font-size: 1rem;
   color: #667eea;
@@ -123,12 +106,9 @@ body {
   cursor: pointer;
   transition: color 0.3s;
 }
-
 .link:hover {
   color: #764ba2;
-}
-
-/* Footer Styles */
+} /* Footer Styles */
 .footer {
   height: 60px;
   padding: 1rem 2rem;
@@ -139,76 +119,60 @@ body {
   border-top: 1px solid #e0e0e0;
   align-items: center;
 }
-
 .footer a {
   font-size: 0.875rem;
   color: #666;
   text-decoration: none;
   transition: color 0.3s;
 }
-
 .footer a:hover {
   color: #667eea;
-}
-
-/* Responsive Design - Smartphone */
+} /* Responsive Design - Smartphone */
 @media (max-width: 768px) {
   .header {
     height: 64px;
     padding: 0 1rem;
   }
-
   .logo {
     width: 32px;
     height: 32px;
     font-size: 1rem;
     margin-right: 0.5rem;
   }
-
   .nav {
     gap: 1rem;
   }
-
   .nav a {
     font-size: 0.875rem;
   }
-
   .main {
     padding: 2rem 1rem;
   }
-
   .title {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
   }
-
   .description {
     font-size: 1rem;
     margin-bottom: 1.5rem;
   }
-
   .btn-primary {
     width: 100%;
     height: 44px;
   }
-
   .link {
     font-size: 0.875rem;
   }
-
   .footer {
     height: auto;
     padding: 1rem;
     flex-direction: column;
     gap: 0.5rem;
   }
-
   .footer a {
     font-size: 0.75rem;
   }
-}
-
-/* Extra small devices */
+} /* Extra small devices */
 @media (max-width: 375px) {
   .nav a {
     font-size: 0.75rem;

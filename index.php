@@ -12,7 +12,7 @@ $page_title = "Module Connexion";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -23,9 +23,9 @@ $page_title = "Module Connexion";
         </div>
         <nav class="nav">
             <a href="index.php" class="active">Accueil</a>
-            <a href="connexion.php">Connexion</a>
-            <a href="inscription.php">Inscription</a>
-            <a href="profil.php">Profil</a>
+            <a href="pages/connexion.php">Connexion</a>
+            <a href="pages/inscription.php">Inscription</a>
+            <a href="pages/profil.php">Profil</a>
         </nav>
     </header>
 
@@ -44,10 +44,10 @@ $page_title = "Module Connexion";
     <!-- Footer -->
     <footer class="footer">
         <a href="index.php">Accueil</a>
-        <a href="connexion.php">Connexion</a>
-        <a href="inscription.php">Inscription</a>
-        <a href="profil.php">Profil</a>
-        <a href="admin.php">Admin</a>
+        <a href="pages/connexion.php">Connexion</a>
+        <a href="pages/inscription.php">Inscription</a>
+        <a href="pages/profil.php">Profil</a>
+        <a href="pages/admin.php">Admin</a>
     </footer>
 </body>
 
