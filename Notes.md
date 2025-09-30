@@ -50,6 +50,7 @@ TP PHP avec PDO : module d’inscription, connexion, profil, admin
 | ⚙️ Développer le fichier `db.php` | Connexion PDO centralisée |
 | 📝 Développer la page `inscription.php` | Formulaire d’inscription avec validation |
 | 🔐 Développer la page `connexion.php` | Formulaire de connexion avec gestion des sessions |
+| 🔓 Développer la page logout.php    Détruire la session et rediriger l’utilisateur après déconnexion |
 | 👤 Développer la page `profil.php` | Formulaire pré-rempli pour modifier les informations utilisateur |
 | 🛠️ Développer la page `admin.php` | Liste des utilisateurs, accès restreint à l’admin |
 | 🎨 Créer le design CSS | Thème personnalisé et responsive |
