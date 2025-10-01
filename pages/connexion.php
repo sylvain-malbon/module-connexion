@@ -60,25 +60,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
-        <p>
-        <form method="POST" action="connexion.php" class="description">
-            <label for="login">Nom d'utilisateur</label>
-            <input type="text" name="login" id="login" required>
-            </p>
+        <form method="POST" action="connexion.php" class="form">
+            <div class="form-group">
+                <label for="login">Identifiant</label>
+                <input type="text" name="login" id="login" required>
+            </div>
 
-            <p class="description">
+            <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input type="password" name="password" id="password" required>
-            </p>
+            </div>
 
-            <p>
-                <button class="btn-primary" type="submit">
-                    Se connecter
-                </button>
-            </p>
-
-            <a href="inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
+            <button class="btn-primary" type="submit">
+                Se connecter
+            </button>
+            <p class="description">
+                <a href="inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
         </form>
+        </p>
     </main>
 
     <!-- Footer -->
