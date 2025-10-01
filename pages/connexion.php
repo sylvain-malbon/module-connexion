@@ -44,22 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo-section">
-            <div class="logo">M</div>
-        </div>
-        <nav class="nav">
-            <a href="../index.php" class="active">Accueil</a>
-            <a href="pages/connexion.php">Connexion</a>
-            <a href="pages/inscription.php">Inscription</a>
-            <a href="pages/profil.php">Profil</a>
-        </nav>
-    </header>
+
+    <?php include('../assets/includes/header.php'); ?>
 
     <!-- Main Content -->
     <main class="main">
-        <h1 class="title">Connexion</h1>
+        <h2 class="subtitle">Connexion</h2>
+        <p class="description">
+            Connectez-vous pour accéder à votre espace personnel.
+        </p>
 
         <!-- Condition PHP -->
         <?php if ($error): ?>
@@ -87,14 +80,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <a href="index.php">Accueil</a>
-        <a href="pages/connexion.php">Connexion</a>
-        <a href="pages/inscription.php">Inscription</a>
-        <a href="pages/profil.php">Profil</a>
-        <a href="pages/admin.php">Admin</a>
-    </footer>
+    <?php include('../assets/includes/footer.php'); ?>
+
 </body>
 
 </html>

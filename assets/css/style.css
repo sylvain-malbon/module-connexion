@@ -67,7 +67,13 @@ body {
 }
 .title {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.15rem;
+  color: #333;
+  font-weight: 700;
+}
+.subtitle {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
   color: #333;
   font-weight: 700;
 }

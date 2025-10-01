@@ -20,6 +20,7 @@ $page_title = "Module Connexion";
     <header class="header">
         <div class="logo-section">
             <div class="logo">M</div>
+            <h1 class="title">Module Connexion</h1>
         </div>
         <nav class="nav">
             <a href="index.php" class="active">Accueil</a>
@@ -31,12 +32,12 @@ $page_title = "Module Connexion";
 
     <!-- Main Content -->
     <main class="main">
-        <h1 class="title">Module Connexion</h1>
+        <h2 class="subtitle">Accueil</h2>
         <p class="description">
-            Bienvenue sur le module. Vous pouvez vous connecter ou créer un compte pour accéder à votre profil.
+            Bienvenue sur le module. Vous pouvez vous connecter ou créer un compte pour accéder à votre espace personnel.
         </p>
-        <button class="btn-primary" onclick="window.location.href='connexion.php'">
-            Se connecter
+        <button class="btn-primary" onclick="window.location.href='pages/connexion.php'">
+            Connexion
         </button>
         <a href="inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
     </main>
