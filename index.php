@@ -52,7 +52,7 @@ $page_title = "Module Connexion";
                 <?php if ($_SESSION['login'] === 'admin'): ?>
                     <a href="pages/admin.php" class="<?php echo navActive('admin.php'); ?>">🛠️ Admin</a>
                 <?php endif; ?>
-                <a href="pages/deconnexion.php">🚪 Déconnexion</a>
+                <a href="assets/includes/deconnexion.php" class="logout">🚪 Déconnexion</a>
             <?php endif; ?>
         </nav>
     </header>
@@ -86,7 +86,7 @@ $page_title = "Module Connexion";
             <?php if ($_SESSION['login'] === 'admin'): ?>
                 <a href="pages/admin.php" class="<?php echo navActive('admin.php'); ?>">Admin</a>
             <?php endif; ?>
-            <a href="pages/deconnexion.php">Déconnexion</a>
+            <a href="assets/includes/deconnexion.php" class="logout">Déconnexion</a>
         <?php endif; ?>
     </footer>
 </body>

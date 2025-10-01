@@ -33,7 +33,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php if ($_SESSION['login'] === 'admin'): ?>
                 <a href="admin.php" class="<?php echo navActive('admin.php'); ?>">🛠️ Admin</a>
             <?php endif; ?>
-            <a href="deconnexion.php">🚪 Déconnexion</a>
+            <a href="/assets/includes/deconnexion.php" class="logout">🚪 Déconnexion</a>
         <?php endif; ?>
     </nav>
 </header>

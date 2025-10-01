@@ -192,3 +192,24 @@ body {
     gap: 0.5rem;
   }
 }
+
+/* Déconnexion isolée visuellement */
+.nav a.logout {
+  color: #5f5f5f;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: rgba(102, 126, 234, 0.08); /* bleu-violet très transparent */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav a.logout:hover {
+  background-color: rgba(102, 126, 234, 0.15); /* un peu plus visible au survol */
+  color: #667eea; /* ton bleu principal */
+}
+.nav a.logout {
+  /* ... ton style actuel ... */
+  display: inline-flex;
+  align-items: center;
+  line-height: 1; /* évite les décalages verticaux */
+}
