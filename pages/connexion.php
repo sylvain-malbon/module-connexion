@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
+    <!-- Header -->
     <?php include('../assets/includes/header.php'); ?>
 
     <!-- Main Content -->
@@ -80,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </main>
 
+    <!-- Footer -->
     <?php include('../assets/includes/footer.php'); ?>
 
 </body>

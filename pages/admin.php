@@ -16,34 +16,19 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== 'admin') {
 </head>
 
 <body>
+
     <!-- Header -->
-    <header class="header">
-        <div class="logo-section">
-            <div class="logo">M</div>
-        </div>
-        <nav class="nav">
-            <a href="../index.php">Accueil</a>
-            <a href="connexion.php">Connexion</a>
-            <a href="inscription.php">Inscription</a>
-            <a href="profil.php">Profil</a>
-            <a href="admin.php" class="active">Admin</a>
-        </nav>
-    </header>
+    <?php include('../assets/includes/header.php'); ?>
 
     <!-- Main -->
     <main class="main">
-        <h1 class="title">Espace Administrateur</h1>
+        <h2 class="title">Administration</h2>
         <p class="description">Bienvenue, <?php echo htmlspecialchars($_SESSION['login']); ?>. Vous avez accès aux fonctions d’administration.</p>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <a href="../index.php">Accueil</a>
-        <a href="connexion.php">Connexion</a>
-        <a href="inscription.php">Inscription</a>
-        <a href="profil.php">Profil</a>
-        <a href="admin.php">Admin</a>
-    </footer>
+    <?php include('../assets/includes/footer.php'); ?>
+
 </body>
 
 </html>

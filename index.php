@@ -17,16 +17,43 @@ $page_title = "Module Connexion";
 
 <body>
     <!-- Header -->
+    <?php
+    // Détection de la page active
+    $activePage = basename($_SERVER['PHP_SELF']);
+
+    // Fonction pour activer le lien courant
+    if (!function_exists('navActive')) {
+        function navActive($page)
+        {
+            global $activePage;
+            return ($activePage === $page) ? 'active' : '';
+        }
+    }
+
+    // Démarrer la session si elle n'est pas déjà active
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    ?>
+
     <header class="header">
         <div class="logo-section">
             <div class="logo">M</div>
             <h1 class="title">Module Connexion</h1>
         </div>
         <nav class="nav">
-            <a href="index.php" class="active">Accueil</a>
-            <a href="pages/connexion.php">Connexion</a>
-            <a href="pages/inscription.php">Inscription</a>
-            <a href="pages/profil.php">Profil</a>
+            <a href="index.php" class="<?php echo navActive('index.php'); ?>">🏠 Accueil</a>
+
+            <?php if (!isset($_SESSION['id'])): ?>
+                <a href="pages/connexion.php" class="<?php echo navActive('connexion.php'); ?>">🔐 Connexion</a>
+                <a href="pages/inscription.php" class="<?php echo navActive('inscription.php'); ?>">📝 Inscription</a>
+            <?php else: ?>
+                <a href="pages/profil.php" class="<?php echo navActive('profil.php'); ?>">👤 Profil</a>
+                <?php if ($_SESSION['login'] === 'admin'): ?>
+                    <a href="pages/admin.php" class="<?php echo navActive('admin.php'); ?>">🛠️ Admin</a>
+                <?php endif; ?>
+                <a href="pages/deconnexion.php">🚪 Déconnexion</a>
+            <?php endif; ?>
         </nav>
     </header>
 
@@ -43,12 +70,24 @@ $page_title = "Module Connexion";
     </main>
 
     <!-- Footer -->
+    <?php
+    // footer.php - Pied de page du module
+    // $activePage et navActive() sont déjà définis dans header.php donc présentes via include dans les pages
+    ?>
+
     <footer class="footer">
-        <a href="index.php">Accueil</a>
-        <a href="pages/connexion.php">Connexion</a>
-        <a href="pages/inscription.php">Inscription</a>
-        <a href="pages/profil.php">Profil</a>
-        <a href="pages/admin.php">Admin</a>
+        <a href="index.php" class="<?php echo navActive('index.php'); ?>">Accueil</a>
+
+        <?php if (!isset($_SESSION['id'])): ?>
+            <a href="pages/connexion.php" class="<?php echo navActive('connexion.php'); ?>">Connexion</a>
+            <a href="pages/inscription.php" class="<?php echo navActive('inscription.php'); ?>">Inscription</a>
+        <?php else: ?>
+            <a href="pages/profil.php" class="<?php echo navActive('profil.php'); ?>">Profil</a>
+            <?php if ($_SESSION['login'] === 'admin'): ?>
+                <a href="pages/admin.php" class="<?php echo navActive('admin.php'); ?>">Admin</a>
+            <?php endif; ?>
+            <a href="pages/deconnexion.php">Déconnexion</a>
+        <?php endif; ?>
     </footer>
 </body>
 
