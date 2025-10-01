@@ -10,6 +10,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+.error {
+  color: #e53935; /* rouge vif */
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
 } /* Header Styles */
 .header {
   height: 80px;
@@ -31,12 +37,13 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 8px;
   margin-right: 1rem;
+  padding-bottom: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .nav {
   display: flex;

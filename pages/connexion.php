@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="main">
         <h2 class="subtitle">Connexion</h2>
         <p class="description">
-            Connectez-vous pour accéder à votre espace personnel.
+            Connectez-vous pour accéder à votre profil.
         </p>
 
         <!-- Condition PHP -->
@@ -71,13 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </p>
 
             <p>
-                <button class="btn-primary" onclick="window.location.href='connexion.php'">
+                <button class="btn-primary" type="submit">
                     Se connecter
                 </button>
             </p>
 
             <a href="inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
-
+        </form>
     </main>
 
     <?php include('../assets/includes/footer.php'); ?>

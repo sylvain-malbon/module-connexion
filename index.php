@@ -34,7 +34,7 @@ $page_title = "Module Connexion";
     <main class="main">
         <h2 class="subtitle">Accueil</h2>
         <p class="description">
-            Bienvenue sur le module. Vous pouvez vous connecter ou créer un compte pour accéder à votre espace personnel.
+            Bienvenue sur le Module Connexion. Vous pouvez vous connecter ou créer un compte pour accéder à votre profil.
         </p>
         <button class="btn-primary" onclick="window.location.href='pages/connexion.php'">
             Connexion
