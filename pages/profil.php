@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Profil</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -57,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Main -->
     <main class="main">
-        <h2 class="title">Profil</h2>
+        <h2 class="subtitle">Profil</h2>
         <p class="description">
             Bienvenue sur votre profil utilisateur.<br>
             Vous pouvez consulter ou modifier vos informations ici.

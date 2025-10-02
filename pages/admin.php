@@ -6,15 +6,19 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== 'admin') {
     exit;
 }
 
-// Connexion à la base de données
-$bdd = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
-if (!$bdd) {
-    die('Erreur de connexion : ' . mysqli_connect_error());
+// Connexion à la base de données avec PDO
+try {
+    $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', '');
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Erreur de connexion : ' . $e->getMessage());
 }
 
-// Requête pour récupérer tous les utilisateurs
-$requete = mysqli_query($bdd, "SELECT id, login, prenom, nom FROM utilisateurs");
-$users = mysqli_fetch_all($requete, MYSQLI_ASSOC);
+// Requête préparée pour récupérer tous les utilisateurs
+$sql = "SELECT id, login, prenom, nom FROM utilisateurs";
+$stmt = $bdd->prepare($sql);
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +28,8 @@ $users = mysqli_fetch_all($requete, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <title>Admin</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -33,7 +39,7 @@ $users = mysqli_fetch_all($requete, MYSQLI_ASSOC);
 
     <!-- Main -->
     <main class="main">
-        <h2 class="title">Administration</h2>
+        <h2 class="subtitle">Administration</h2>
         <p class="description">Bienvenue, <?= htmlspecialchars($_SESSION['login']) ?>. Vous avez accès aux fonctions d’administration.</p>
 
         <h3 class="subtitle">Liste des utilisateurs</h3>

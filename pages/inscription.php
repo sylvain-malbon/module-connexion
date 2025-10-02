@@ -1,3 +1,69 @@
+<?php
+session_start();
+$erreurs = [];
+$success = "";
+
+// Traitement du formulaire
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', '');
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch (PDOException $e) {
+        die('Erreur de connexion : ' . $e->getMessage());
+    }
+
+    // Nettoyage des données
+    $prenom = trim($_POST['prenom']);
+    $nom = trim($_POST['nom']);
+    $login = trim($_POST['login']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validation des champs
+    if (empty($prenom) || empty($nom) || empty($login) || empty($password) || empty($confirm_password)) {
+        $erreurs[] = "Tous les champs sont obligatoires.";
+    }
+
+    if ($password !== $confirm_password) {
+        $erreurs[] = "Les mots de passe ne correspondent pas.";
+    }
+
+    if (strlen($login) < 4 || strlen($login) > 20) {
+        $erreurs[] = "L'identifiant doit contenir entre 4 et 20 caractères.";
+    }
+
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $login)) {
+        $erreurs[] = "L'identifiant ne doit contenir que des lettres, chiffres et underscores (_).";
+    }
+
+    if (strlen($password) < 6 || strlen($password) > 30) {
+        $erreurs[] = "Le mot de passe doit contenir entre 6 et 30 caractères.";
+    }
+
+    if (!preg_match('/[A-Z]/', $password) || !preg_match('/[a-z]/', $password) || !preg_match('/[0-9]/', $password)) {
+        $erreurs[] = "Le mot de passe doit contenir au moins une majuscule, une minuscule et un chiffre.";
+    }
+
+    // Si aucune erreur, on peut insérer
+    if (empty($erreurs)) {
+        $stmt = $bdd->prepare("SELECT id FROM utilisateurs WHERE login = :login");
+        $stmt->execute(['login' => $login]);
+        if ($stmt->fetch()) {
+            $erreurs[] = "Ce login est déjà utilisé.";
+        } else {
+            $stmt = $bdd->prepare("INSERT INTO utilisateurs (prenom, nom, login, password) VALUES (:prenom, :nom, :login, :password)");
+            $stmt->execute([
+                'prenom' => $prenom,
+                'nom' => $nom,
+                'login' => $login,
+                'password' => password_hash($password, PASSWORD_DEFAULT)
+            ]);
+            $success = "Inscription réussie ! Vous pouvez maintenant vous connecter.";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,33 +71,47 @@
     <meta charset="UTF-8">
     <title>Inscription</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <!-- Header -->
     <?php include('../assets/includes/header.php'); ?>
 
     <main class="main">
         <h2 class="subtitle">Inscription</h2>
+
+        <?php if (!empty($erreurs)): ?>
+            <div class="error">
+                <?php foreach ($erreurs as $erreur): ?>
+                    <p><?= htmlspecialchars($erreur) ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($success): ?>
+            <div class="success">
+                <p><?= htmlspecialchars($success) ?></p>
+            </div>
+        <?php endif; ?>
+
         <p class="description">
             Créez un compte pour accéder à votre profil et aux fonctionnalités du Module Connexion.
         </p>
 
-        <form action="traitement_inscription.php" method="POST" class="form">
+        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" class="form">
             <div class="form-group">
                 <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required>
+                <input type="text" id="prenom" name="prenom" value="<?= htmlspecialchars($prenom ?? '') ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
+                <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($nom ?? '') ?>" required>
             </div>
-
 
             <div class="form-group">
                 <label for="login">Identifiant</label>
-                <input type="text" id="login" name="login" required>
+                <input type="text" id="login" name="login" value="<?= htmlspecialchars($login ?? '') ?>" required>
             </div>
 
             <div class="form-group">
@@ -45,10 +125,16 @@
             </div>
 
             <button type="submit" class="btn-primary">S'inscrire</button>
+
+            <div class="link-wrapper">
+                <p>
+                    <a href="connexion.php" class="link">Déjà inscrit ? Connectez-vous.</a>
+                </p>
+            </div>
         </form>
+
     </main>
 
-    <!-- Footer -->
     <?php include_once('../assets/includes/footer.php'); ?>
 </body>
 
