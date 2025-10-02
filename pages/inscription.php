@@ -3,14 +3,11 @@ session_start();
 $erreurs = [];
 $success = "";
 
+// Inclusion de la connexion PDO centralisée
+require_once '../assets/includes/db.php';
+
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', '');
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-        die('Erreur de connexion : ' . $e->getMessage());
-    }
 
     // Nettoyage des données
     $prenom = trim($_POST['prenom']);
@@ -63,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
