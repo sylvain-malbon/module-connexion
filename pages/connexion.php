@@ -47,7 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <!-- Header -->
-    <?php include('../assets/includes/header.php'); ?>
+    <?php
+    $basePath = '..'; // inscription.php est dans /pages
+    include '../assets/includes/header.php';
+    ?>
 
     <!-- Main Content -->
     <main class="main">
