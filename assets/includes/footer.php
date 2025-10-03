@@ -28,6 +28,6 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; <?= date('Y') ?> Sylvain Malbon - Tous droits réservés.</p>
+        <p>&copy; <?= date('Y') ?> Sylvain Malbon – Tous droits réservés.</p>
     </div>
 </footer>
