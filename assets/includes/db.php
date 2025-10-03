@@ -4,7 +4,7 @@
 // 🔧 Paramètres de connexion
 $host = 'localhost'; // l'hôte est toujours 'localhost' sur Plesk
 $dbname = 'sylvain-malbon_module_connexion'; // nom complet de la base générée par Plesk
-$username = 'sylvain-malbon_userweb'; // nom complet de l'utilisateur MySQL créé dans Plesk
+$username = 'userweb'; // nom complet de l'utilisateur MySQL créé dans Plesk
 $password = 'Web2019Kara'; // mot de passe défini pour cet utilisateur (à garder secret)
 
 // 🧩 Connexion PDO avec gestion des erreurs
