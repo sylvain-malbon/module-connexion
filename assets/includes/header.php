@@ -32,8 +32,8 @@ if (!isset($basePath)) {
         <a href="<?= $basePath ?>/index.php" class="<?php echo navActive('index.php'); ?>">🏠 Accueil</a>
 
         <?php if (!isset($_SESSION['id'])): ?>
-            <a href="<?= $basePath ?>/pages/connexion.php" class="<?php echo navActive('connexion.php'); ?>">🔐 Connexion</a>
             <a href="<?= $basePath ?>/pages/inscription.php" class="<?php echo navActive('inscription.php'); ?>">📝 Inscription</a>
+            <a href="<?= $basePath ?>/pages/connexion.php" class="<?php echo navActive('connexion.php'); ?>">🔓 Connexion</a>
         <?php else: ?>
             <a href="<?= $basePath ?>/pages/profil.php" class="<?php echo navActive('profil.php'); ?>">👤 Profil</a>
 
@@ -41,7 +41,7 @@ if (!isset($basePath)) {
                 <a href="<?= $basePath ?>/pages/admin.php" class="<?php echo navActive('admin.php'); ?>">🛠️ Admin</a>
             <?php endif; ?>
 
-            <a href="<?= $basePath ?>/../assets/includes/deconnexion.php" class="logout">🔓 Déconnexion</a>
+            <a href="<?= $basePath ?>/../assets/includes/deconnexion.php" class="logout">🔒 Déconnexion</a>
 
         <?php endif; ?>
     </nav>
