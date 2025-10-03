@@ -41,7 +41,8 @@ if (!isset($basePath)) {
                 <a href="<?= $basePath ?>/pages/admin.php" class="<?php echo navActive('admin.php'); ?>">🛠️ Admin</a>
             <?php endif; ?>
 
-            <a href="<?= $basePath ?>/assets/includes/deconnexion.php" class="logout">🔓 Déconnexion</a>
+            <a href="<?= $basePath ?>/../assets/includes/deconnexion.php" class="logout">🔓 Déconnexion</a>
+
         <?php endif; ?>
     </nav>
 </header>

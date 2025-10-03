@@ -6,29 +6,29 @@ if (!isset($_SESSION['login'])) {
 }
 
 // Connexion à la base de données
-$bdd = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
-if (!$bdd) {
+$pdo = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
+if (!$pdo) {
     die('Erreur de connexion : ' . mysqli_connect_error());
 }
 
 // Récupération des infos utilisateur
 $login = $_SESSION['login'];
-$requete = mysqli_query($bdd, "SELECT * FROM utilisateurs WHERE login = '$login'");
+$requete = mysqli_query($pdo, "SELECT * FROM utilisateurs WHERE login = '$login'");
 $user = mysqli_fetch_assoc($requete);
 
 // Mise à jour des infos si formulaire soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $prenom = mysqli_real_escape_string($bdd, $_POST['prenom']);
-    $nom = mysqli_real_escape_string($bdd, $_POST['nom']);
-    $newLogin = mysqli_real_escape_string($bdd, $_POST['login']);
+    $prenom = mysqli_real_escape_string($pdo, $_POST['prenom']);
+    $nom = mysqli_real_escape_string($pdo, $_POST['nom']);
+    $newLogin = mysqli_real_escape_string($pdo, $_POST['login']);
     $password = $_POST['password'];
 
     // Mise à jour avec ou sans nouveau mot de passe
     if (!empty($password)) {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $update = mysqli_query($bdd, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin', password='$hashed' WHERE login='$login'");
+        $update = mysqli_query($pdo, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin', password='$hashed' WHERE login='$login'");
     } else {
-        $update = mysqli_query($bdd, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin' WHERE login='$login'");
+        $update = mysqli_query($pdo, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin' WHERE login='$login'");
     }
 
     if ($update) {

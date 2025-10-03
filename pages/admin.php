@@ -7,16 +7,11 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== 'admin') {
 }
 
 // Connexion à la base de données avec PDO
-try {
-    $bdd = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', '');
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : ' . $e->getMessage());
-}
+require_once '../assets/includes/db.php';
 
 // Requête préparée pour récupérer tous les utilisateurs
 $sql = "SELECT id, login, prenom, nom FROM utilisateurs";
-$stmt = $bdd->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->execute();
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

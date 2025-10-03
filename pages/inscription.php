@@ -43,12 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Si aucune erreur, on peut insérer
     if (empty($erreurs)) {
-        $stmt = $bdd->prepare("SELECT id FROM utilisateurs WHERE login = :login");
+        $stmt = $pdo->prepare("SELECT id FROM utilisateurs WHERE login = :login");
         $stmt->execute(['login' => $login]);
         if ($stmt->fetch()) {
             $erreurs[] = "Ce login est déjà utilisé.";
         } else {
-            $stmt = $bdd->prepare("INSERT INTO utilisateurs (prenom, nom, login, password) VALUES (:prenom, :nom, :login, :password)");
+            $stmt = $pdo->prepare("INSERT INTO utilisateurs (prenom, nom, login, password) VALUES (:prenom, :nom, :login, :password)");
             $stmt->execute([
                 'prenom' => $prenom,
                 'nom' => $nom,
