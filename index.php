@@ -34,7 +34,7 @@ $page_title = "Module Connexion";
         <button class="btn-primary" onclick="window.location.href='pages/connexion.php'">
             Connexion
         </button>
-        <a href="inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
+        <a href="pages/inscription.php" class="link">Pas encore inscrit ? Inscrivez-vous.</a>
     </main>
 
     <!-- Footer -->

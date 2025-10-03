@@ -5,33 +5,50 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-// Connexion à la base de données
-$pdo = mysqli_connect('localhost', 'root', '', 'moduleconnexion');
-if (!$pdo) {
-    die('Erreur de connexion : ' . mysqli_connect_error());
+// Connexion à la base de données avec PDO
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=moduleconnexion;charset=utf8', 'root', '');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Erreur de connexion : ' . $e->getMessage());
 }
 
 // Récupération des infos utilisateur
 $login = $_SESSION['login'];
-$requete = mysqli_query($pdo, "SELECT * FROM utilisateurs WHERE login = '$login'");
-$user = mysqli_fetch_assoc($requete);
+$stmt = $pdo->prepare("SELECT * FROM utilisateurs WHERE login = :login");
+$stmt->execute(['login' => $login]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Mise à jour des infos si formulaire soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $prenom = mysqli_real_escape_string($pdo, $_POST['prenom']);
-    $nom = mysqli_real_escape_string($pdo, $_POST['nom']);
-    $newLogin = mysqli_real_escape_string($pdo, $_POST['login']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $nom = htmlspecialchars($_POST['nom']);
+    $newLogin = htmlspecialchars($_POST['login']);
     $password = $_POST['password'];
 
-    // Mise à jour avec ou sans nouveau mot de passe
+    // Construction de la requête SQL
     if (!empty($password)) {
         $hashed = password_hash($password, PASSWORD_DEFAULT);
-        $update = mysqli_query($pdo, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin', password='$hashed' WHERE login='$login'");
+        $sql = "UPDATE utilisateurs SET prenom = :prenom, nom = :nom, login = :newLogin, password = :password WHERE login = :login";
+        $params = [
+            'prenom' => $prenom,
+            'nom' => $nom,
+            'newLogin' => $newLogin,
+            'password' => $hashed,
+            'login' => $login
+        ];
     } else {
-        $update = mysqli_query($pdo, "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', login='$newLogin' WHERE login='$login'");
+        $sql = "UPDATE utilisateurs SET prenom = :prenom, nom = :nom, login = :newLogin WHERE login = :login";
+        $params = [
+            'prenom' => $prenom,
+            'nom' => $nom,
+            'newLogin' => $newLogin,
+            'login' => $login
+        ];
     }
 
-    if ($update) {
+    $stmt = $pdo->prepare($sql);
+    if ($stmt->execute($params)) {
         $_SESSION['login'] = $newLogin;
         header('Location: profil.php');
         exit;
@@ -49,14 +66,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Profil</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 
 <body>
 
     <!-- Header -->
     <?php
-    $basePath = '..'; // inscription.php est dans /pages
+    $basePath = '..';
     include '../assets/includes/header.php';
     ?>
 

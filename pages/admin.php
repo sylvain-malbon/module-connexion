@@ -30,7 +30,11 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <!-- Header -->
-    <?php include('../assets/includes/header.php'); ?>
+    <!-- Header -->
+    <?php
+    $basePath = '..'; // inscription.php est dans /pages
+    include '../assets/includes/header.php';
+    ?>
 
     <!-- Main -->
     <main class="main">
