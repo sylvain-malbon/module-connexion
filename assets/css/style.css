@@ -374,3 +374,109 @@ td:first-child {
 tbody tr:last-child td {
   border-bottom: none;
 }
+
+/* Adaptation Smartphone */
+@media (max-width: 480px) {
+  /* Header */
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .logo-section {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Navigation */
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .nav a {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  /* Main */
+  .main {
+    padding: var(--spacing-md);
+    text-align: left;
+    align-items: stretch;
+  }
+
+  .title,
+  .subtitle {
+    font-size: var(--font-size-lg);
+    text-align: center;
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+  }
+
+  /* Formulaire */
+  .form-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .form-group label {
+    line-height: 1.5;
+    font-size: var(--font-size-sm);
+  }
+
+  .form-group input {
+    width: 100%;
+    font-size: var(--font-size-sm);
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Tableaux */
+  table {
+    font-size: var(--font-size-sm);
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-nav a,
+  .footer a.github-link {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-bottom p {
+    font-size: var(--font-size-xs);
+    text-align: center;
+  }
+}

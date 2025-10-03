@@ -1,0 +1,24 @@
+# 🔐 Fichiers sensibles (identifiants, connexions)
+db.php
+identifiants.md
+config_notes.txt
+.env
+
+# 🧪 Fichiers de test ou temporaires
+*.bak
+*.tmp
+test_*.php
+
+# 📦 Dossiers de dépendances (si tu utilises Composer ou Node)
+vendor/
+node_modules/
+
+# 💻 Fichiers système et IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 🗂️ Dossiers de build ou export (si tu en ajoutes plus tard)
+dist/
+build/
